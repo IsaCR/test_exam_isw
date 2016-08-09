@@ -26,4 +26,10 @@ Route::post('/professor/store', 'ProfessorController@store');
 Route::post('/course/store', 'CourseController@store');
 Route::post('/group/store', 'GroupController@store');
 
+Route::get('/professor/edit/{id}', 'ProfessorController@edit');
+Route::get('/course/edit/{id}', 'CourseController@edit');
+Route::get('/group/edit/{id}', 'GroupController@edit');
 
+Route::post('/professor/update/{id}', 'ProfessorController@update');
+Route::post('/course/update/{id}', 'CourseController@update');
+Route::post('/group/update/{id}', 'GroupController@update');

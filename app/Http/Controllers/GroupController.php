@@ -36,7 +36,6 @@ class GroupController extends Controller
     {
         $data['professors'] = Professor::all();
         $data['courses'] = Course::all();
-        // dd($data);
         return view('groups.create', $data);
     }
 
@@ -48,10 +47,7 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         Group::create($request->all());
-        // $group = new Group;
-        // $group->id_professor = $request->id_professor;
         return redirect('group');
     }
 
@@ -74,7 +70,8 @@ class GroupController extends Controller
      */
     public function edit($id)
     {
-        //
+        $professors['professors'] = Professor::find($id);
+        return view('professors.edit', $professors);
     }
 
     /**
@@ -86,7 +83,10 @@ class GroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $professor = Professor::find($id);
+        $professor->name = $request->name;
+        $professor->save();
+        return redirect('professor');
     }
 
     /**
