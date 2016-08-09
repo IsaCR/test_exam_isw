@@ -17,3 +17,13 @@ Route::get('/', function () {
 Route::get('/professor', 'ProfessorController@index');
 Route::get('/course', 'CourseController@index');
 Route::get('/group', 'GroupController@index');
+
+Route::get('/professor/create', 'ProfessorController@create');
+Route::get('/course/create', 'CourseController@create');
+Route::get('/group/create', 'GroupController@create');
+
+Route::post('/professor/store', 'ProfessorController@store');
+Route::post('/course/store', 'CourseController@store');
+Route::post('/group/store', 'GroupController@store');
+
+

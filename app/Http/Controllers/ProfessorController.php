@@ -27,7 +27,7 @@ class ProfessorController extends Controller
      */
     public function create()
     {
-        //
+        return view('professors.create');
     }
 
     /**
@@ -38,7 +38,8 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Professor::create($request->all());
+        return redirect('professor');
     }
 
     /**

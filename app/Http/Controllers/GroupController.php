@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Course;
+use App\Professor;
+use App\Group;
 use App\Http\Requests;
 
 class GroupController extends Controller
@@ -15,7 +17,14 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        $groups['groups'] = Group::all();
+        foreach ($groups['groups'] as $group) {
+          $group->id_professor = Professor::find($group->id_professor);
+        }
+        foreach ($groups['groups'] as $group) {
+          $group->id_course = Course::find($group->id_course);
+        }
+        return view('groups.index', $groups);
     }
 
     /**
@@ -25,7 +34,10 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        $data['professors'] = Professor::all();
+        $data['courses'] = Course::all();
+        // dd($data);
+        return view('groups.create', $data);
     }
 
     /**
@@ -36,7 +48,11 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        Group::create($request->all());
+        // $group = new Group;
+        // $group->id_professor = $request->id_professor;
+        return redirect('group');
     }
 
     /**
