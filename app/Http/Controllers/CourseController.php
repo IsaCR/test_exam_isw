@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Course;
 use App\Http\Requests;
 
 class CourseController extends Controller
@@ -15,7 +15,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses['courses'] = Course::all();
+        return view('courses.index', $courses);
     }
 
     /**
